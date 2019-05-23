@@ -29,7 +29,7 @@ def stripBook(bookName, timeperiod):
 		print(temp)
 		f.write(temp)
 	f.close()
-	return bookName + "Edited";
+	return bookName + "Edited"
 
 def stripBookToAnalyze(bookName):
 	f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\To Analyze\\" + bookName + ".txt", 'r')
@@ -55,14 +55,14 @@ def stripBookToAnalyze(bookName):
 		temp = temp.replace("!", '\n ')
 		temp = temp.replace("\"", '\n ')
 		print(temp)
-		f.write(temp)
+	f.write(temp)
 	f.close()
-	return bookName + "Edited";
+	return bookName + "Edited"
 
-# f = open("VictorianBookTitles.txt", 'r')
-# for line in f:
-# 	temp = line
-# 	if line[-1] == '\n':
-# 		temp = line[:-1]
-# 	print(line)
-# 	stripBook(temp, "Victorian")
+f = open("RomanticBookTitles.txt", 'r')
+for line in f:
+	temp = line
+	if line[-1] == '\n':
+		temp = line[:-1]
+	print(line)
+	stripBook(temp, "Romantic")

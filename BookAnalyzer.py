@@ -86,7 +86,7 @@ def bookData(filename):
 	return data
 
 def wordPercentageError(word, bookData, sum, periodData, periodSum):
-	percentage = bookData[word] / (sum * 1.0)
+	percentage = float(bookData[word] / (sum * 1.0))
 	if word not in periodData:
 		print(percentage)
 		return percentage
@@ -95,7 +95,7 @@ def wordPercentageError(word, bookData, sum, periodData, periodSum):
 		return abs((periodPercent - percentage) / periodPercent)
 
 def totalPercentageError(bookData, sum, periodData, periodSum):
-	totalError = 0.0
+	totalError = float(0.0)
 	for word in bookData:
 		totalError += wordPercentageError(word, bookData, sum, periodData, periodSum)
 	print('Total Error: ', totalError)
