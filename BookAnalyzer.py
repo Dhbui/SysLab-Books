@@ -8,7 +8,10 @@ def getData(timePeriod):
 	data = dict()
 	index = 0
 	while index < len(lines):
-		data[lines[index]] = int(lines[index + 1])
+		if lines[index][-1] == "\n":
+			data[lines[index][:-1]] = int(lines[index + 1])
+		else:
+			data[lines[index]] = int(lines[index + 1])
 		index += 2
 
 	return data
@@ -91,8 +94,8 @@ def wordPercentageError(word, bookData, sum, periodData, periodSum):
 	if word not in bookData:
 		return percentage
 	else:
-		difference = bookData[word] / (sum * 1.0)
-		return abs((percentage - difference) / percentage)
+		difference = float(bookData[word] / (sum * 1.0))
+		return float(abs((percentage - difference) / percentage))
 
 def totalPercentageError(bookData, sum, periodData, periodSum):
 	totalDifference = float(0.0)
@@ -113,6 +116,7 @@ def heuristicBook(filename):
 	romanticSum = 0
 	renaissanceSum = 0
 	victorianSum = 0
+	#print(middleEnglishData)
 	for key in data:
 		dataSum += data[key]
 	for key in middleEnglishData:
