@@ -46,7 +46,7 @@ def romanticCheck(booktitle):
 def victorianCheck(booktitle):
 	f = open(victorianBooks, 'r')
 	titles = f.readlines()
-	print(titles)
+	#print(titles)
 	for title in titles:
 		if(title[-1] == '\n'):
 			newtitle = title[:-1]

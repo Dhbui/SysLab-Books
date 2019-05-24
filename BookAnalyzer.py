@@ -16,7 +16,7 @@ def getData(timePeriod):
 def createData(timePeriod):
 	f = open(timePeriod + "BookTitles.txt", 'r')
 	bookTitles = f.readlines()
-	print(bookTitles)
+	#print(bookTitles)
 	f.close()
 	f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\Data\\" + timePeriod + "Data.txt", 'w+')
 	data = dict()
@@ -37,7 +37,7 @@ def createData(timePeriod):
 						data[tempword] += 1
 		book.close()
 	data.pop("", None)
-	print(data)
+	#print(data)
 	for key in data:
 		f.write(key + '\n')
 		f.write(str(data[key]) + '\n')
@@ -60,7 +60,7 @@ def updateData(bookname, timePeriod):
 	book.close()
 	f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\Data\\" + timePeriod + "Data.txt", 'w')
 	data.pop("", None)
-	print(data)
+	#print(data)
 	for key in data:
 		f.write(key + '\n')
 		f.write(str(data[key]) + '\n')
@@ -82,24 +82,24 @@ def bookData(filename):
 					data[tempword] += 1
 	book.close()
 	data.pop("", None)
-	print(data)
+	#print(data)
 	return data
 
 def wordPercentageError(word, bookData, sum, periodData, periodSum):
-	percentage = float(bookData[word] / (sum * 1.0))
-	if word not in periodData:
-		print(percentage)
+	percentage = float(periodData[word] / (periodSum * 1.0))
+	#print(word, ' ', percentage)
+	if word not in bookData:
 		return percentage
 	else:
-		periodPercent = periodData[word] / (periodSum * 1.0)
-		return abs((periodPercent - percentage) / periodPercent)
+		difference = bookData[word] / (sum * 1.0)
+		return abs((percentage - difference) / percentage)
 
 def totalPercentageError(bookData, sum, periodData, periodSum):
-	totalError = float(0.0)
-	for word in bookData:
-		totalError += wordPercentageError(word, bookData, sum, periodData, periodSum)
-	print('Total Error: ', totalError)
-	return totalError
+	totalDifference = float(0.0)
+	for word in periodData:
+		totalDifference += wordPercentageError(word, bookData, sum, periodData, periodSum)
+	#print('Total Error: ', totalDifference)
+	return totalDifference
 
 def heuristicBook(filename):
 	newBook = BookEditor.stripBookToAnalyze(filename)
@@ -140,4 +140,4 @@ def heuristicBook(filename):
 	print(minimumError)
 	return minimumError[1]
 
-print(heuristicBook("Castle Rackrent"))
+print(heuristicBook("Chaucer's Retraction"))
