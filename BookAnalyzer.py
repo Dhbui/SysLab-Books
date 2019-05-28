@@ -88,19 +88,29 @@ def bookData(filename):
 	#print(data)
 	return data
 
-def wordPercentageError(word, bookData, sum, periodData, periodSum):
+def wordPercentageErrorTimePeriod(word, bookData, sum, periodData, periodSum):
 	percentage = float(periodData[word] / (periodSum * 1.0))
 	#print(word, ' ', percentage)
 	if word not in bookData:
 		return percentage
 	else:
 		difference = float(bookData[word] / (sum * 1.0))
-		return float(abs((percentage - difference) / percentage))
+		return float(abs(percentage - difference))
+
+def wordPercentageErrorBook(word, bookData, sum, periodData):
+	percentage = float(bookData[word] / (sum * 1.0))
+	#print(word, ' ', percentage)
+	if word not in periodData:
+		return percentage
+	else:
+		return 0
 
 def totalPercentageError(bookData, sum, periodData, periodSum):
 	totalDifference = float(0.0)
 	for word in periodData:
-		totalDifference += wordPercentageError(word, bookData, sum, periodData, periodSum)
+		totalDifference += wordPercentageErrorTimePeriod(word, bookData, sum, periodData, periodSum)
+	for word in bookData:
+		totalDifference += wordPercentageErrorBook(word, bookData, sum, periodData)
 	#print('Total Error: ', totalDifference)
 	return totalDifference
 
@@ -144,4 +154,4 @@ def heuristicBook(filename):
 	print(minimumError)
 	return minimumError[1]
 
-print(heuristicBook("Chaucer's Retraction"))
+
