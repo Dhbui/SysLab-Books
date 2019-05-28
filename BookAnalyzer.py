@@ -154,6 +154,7 @@ def heuristicBook(filename):
 	return minimumError[1]
 
 
+createData("Renaissance")
 f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\TestingSetBookTitles.txt", 'r')
 titles = f.readlines()
 f.close()
