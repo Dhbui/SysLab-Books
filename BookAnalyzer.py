@@ -1,4 +1,3 @@
-import sys
 import BookEditor
 
 def getData(timePeriod):
@@ -137,21 +136,29 @@ def heuristicBook(filename):
 		renaissanceSum += renaissanceData[key]
 	for key in victorianData:
 		victorianSum += victorianData[key]
-	print(dataSum)
-	print(middleEnglishSum)
-	print(romanticSum)
-	print(renaissanceSum)
-	print(victorianSum)
+	# print(dataSum)
+	# print(middleEnglishSum)
+	# print(romanticSum)
+	# print(renaissanceSum)
+	# print(victorianSum)
 	middleEnglishTuple = (totalPercentageError(data, dataSum, middleEnglishData, middleEnglishSum), "Middle English")
 	romanticTuple = (totalPercentageError(data, dataSum, romanticData, romanticSum), "Romantic")
 	renaissanceTuple = (totalPercentageError(data, dataSum, renaissanceData, renaissanceSum), "Renaissance")
 	victorianTuple = (totalPercentageError(data, dataSum, victorianData, victorianSum), "Victorian")
 	minimumError = min(middleEnglishTuple, romanticTuple, renaissanceTuple, victorianTuple)
-	print(middleEnglishTuple)
-	print(romanticTuple)
-	print(renaissanceTuple)
-	print(victorianTuple)
-	print(minimumError)
+	# print(middleEnglishTuple)
+	# print(romanticTuple)
+	# print(renaissanceTuple)
+	# print(victorianTuple)
+	# print(minimumError)
 	return minimumError[1]
 
 
+f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\TestingSetBookTitles.txt", 'r')
+titles = f.readlines()
+f.close()
+for title in titles:
+	temp = title
+	if title[-1] == "\n":
+		temp = title[:-1]
+	print(temp, ": ", heuristicBook(temp))

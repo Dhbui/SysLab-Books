@@ -31,7 +31,7 @@ def stripBook(bookName, timeperiod):
 
 def stripBookToAnalyze(bookName):
 	f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\To Analyze\\" + bookName + ".txt", 'r')
-	print(line for line in f)
+	# print([line for line in f])
 	lines = [line.rstrip('\n') for line in f]
 	f.close()
 	f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\Edited Books\\" + bookName + "Edited.txt", 'w+')
