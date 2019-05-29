@@ -56,10 +56,10 @@ def stripBookToAnalyze(bookName):
 	f.close()
 	return bookName + "Edited"
 
-f = open("RenaissanceBookTitles.txt", 'r')
-for line in f:
-	temp = line
-	if line[-1] == '\n':
-		temp = line[:-1]
-	print(line)
-	stripBook(temp, "Renaissance")
+# f = open("RenaissanceBookTitles.txt", 'r')
+# for line in f:
+# 	temp = line
+# 	if line[-1] == '\n':
+# 		temp = line[:-1]
+# 	print(line)
+# 	stripBook(temp, "Renaissance")
