@@ -56,4 +56,15 @@ def victorianCheck(booktitle):
 			return True
 	return False
 
-print(victorianCheck("A Christmas Carol"))
+def addBookToDatabase(bookTitle, timePeriod):
+	f = open(timePeriod + "BookTitles.txt", 'r')
+	bookTitles = f.readlines()
+	f.close()
+	f = open(timePeriod + "BookTitles.txt", 'w+')
+	for title in bookTitles:
+		temp = title
+		if temp[-1] == "\n":
+			temp = title[:-1]
+		f.write(temp + "\n")
+	f.write(bookTitle + "\n")
+	f.close()

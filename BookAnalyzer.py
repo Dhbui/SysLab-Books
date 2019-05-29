@@ -136,32 +136,33 @@ def heuristicBook(filename):
 		renaissanceSum += renaissanceData[key]
 	for key in victorianData:
 		victorianSum += victorianData[key]
-	print(dataSum)
-	print(middleEnglishSum)
-	print(romanticSum)
-	print(renaissanceSum)
-	print(victorianSum)
+	# print("")
+	# print(dataSum)
+	# print(middleEnglishSum)
+	# print(romanticSum)
+	# print(renaissanceSum)
+	# print(victorianSum)
 	middleEnglishTuple = (totalPercentageError(data, dataSum, middleEnglishData, middleEnglishSum), "Middle English")
 	romanticTuple = (totalPercentageError(data, dataSum, romanticData, romanticSum), "Romantic")
 	renaissanceTuple = (totalPercentageError(data, dataSum, renaissanceData, renaissanceSum), "Renaissance")
 	victorianTuple = (totalPercentageError(data, dataSum, victorianData, victorianSum), "Victorian")
 	minimumError = min(middleEnglishTuple, romanticTuple, renaissanceTuple, victorianTuple)
-	print("(%5.3f, "%(middleEnglishTuple[0]), middleEnglishTuple[1], ")")
-	print("(%5.3f, "%(romanticTuple[0]), romanticTuple[1], ")")
-	print("(%5.3f, "%(renaissanceTuple[0]), renaissanceTuple[1], ")")
-	print("(%5.3f, "%(victorianTuple[0]), victorianTuple[1], ")")
-	print("(%5.3f, "%(minimumError[0]), minimumError[1], ")")
+	# print("(%5.3f," % (middleEnglishTuple[0]), middleEnglishTuple[1], ")")
+	# print("(%5.3f," % (romanticTuple[0]), romanticTuple[1], ")")
+	# print("(%5.3f," % (renaissanceTuple[0]), renaissanceTuple[1], ")")
+	# print("(%5.3f," % (victorianTuple[0]), victorianTuple[1], ")")
+	# print("(%5.3f," % (minimumError[0]), minimumError[1], ")")
 	return minimumError[1]
 
 
-print(heuristicBook('Castle Rackrent'))
+# print(heuristicBook('Castle Rackrent'))
 
-# createData("Renaissance")
-# f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\TestingSetBookTitles.txt", 'r')
-# titles = f.readlines()
-# f.close()
-# for title in titles:
-# 	temp = title
-# 	if title[-1] == "\n":
-# 		temp = title[:-1]
-# 	print(temp, ": ", heuristicBook(temp))
+createData("Renaissance")
+f = open("C:\\Users\\Dylan\\Documents\\SysLab Books\\TestingSetBookTitles.txt", 'r')
+titles = f.readlines()
+f.close()
+for title in titles:
+	temp = title
+	if title[-1] == "\n":
+		temp = title[:-1]
+	print(temp, ": ", heuristicBook(temp))
